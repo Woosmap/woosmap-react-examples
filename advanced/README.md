@@ -1,15 +1,15 @@
-Basic example
+Advanced example
 ---
 
-Display a Woosmap Map tiled view on top of Google Maps
+Display a Woosmap Map tiled view with a Localities Searchbox
 
-![Demo Basic](./basic.jpg)
+![Demo Advanced](./advanced.jpg)
 
 ### Local Development
 
     git clone https://github.com/woosmap/woosmap-react-examples.git
 
-    cd woosmap-react-examples/basic
+    cd woosmap-react-examples/advanced
     npm install
     npm start
 
