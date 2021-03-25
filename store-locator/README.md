@@ -1,7 +1,7 @@
-Advanced example
+Store Locator example
 ---
 
-Display a Woosmap Map tiled view with a Localities Searchbox
+Display a Woosmap Map tiled view with a Localities search box and an InfoWindow on store selection
 
 ![Demo Advanced](./advanced.jpg)
 

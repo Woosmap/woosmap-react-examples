@@ -7,7 +7,7 @@
     "loadJQuery": false
   },
   "googleLoadOptions": {
-    "key": "AIzaSyCOtRab6Lh2pNn7gYxvAqN5leETC24OXYQ"
+    "key": ""
   },
   "googleMapsOptions": {
     "center": {
@@ -48,7 +48,8 @@
       "size": 15,
       "minSize": 4
     },
-    "breakPoint": 12
+    "breakPoint": 12,
+    "gentleCenter": false
   },
   "storesByPage": 10
 }

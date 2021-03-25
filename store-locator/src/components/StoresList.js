@@ -11,6 +11,10 @@ export default function StoresList({location, mapView, dataSource, selectedStore
     }, [location])
 
     const setSelectedStore = (store) => {
+        mapView.panTo({
+            lat: store.geometry.coordinates[1],
+            lng: store.geometry.coordinates[0]
+        });
         mapView.set("selectedStore", store);
     }
 
