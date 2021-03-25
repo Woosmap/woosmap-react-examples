@@ -9,7 +9,7 @@ Display a Woosmap Map tiled view with a Localities search box and an InfoWindow 
 
     git clone https://github.com/woosmap/woosmap-react-examples.git
 
-    cd woosmap-react-examples/advanced
+    cd woosmap-react-examples/store-locator
     npm install
     npm start
 
