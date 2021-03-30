@@ -1,25 +1,19 @@
 import React, {useRef, useEffect, useState} from 'react';
+import useScript from "./hooks/useScript";
+
 import './Map.css';
 import conf from "./config.json";
 
 
 const Map = () => {
     const mapContainerRef = useRef(null);
+    const woosmapLoaded = useScript(conf.woosmapLoaderUrl);
 
-    // Load Woosmap Loader when component mounts
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = conf.woosmapLoaderUrl;
-        script.async = true;
-        document.body.appendChild(script);
-        script.addEventListener("load", () => {
-            // init the map when woosmap loader is loaded
+        if (woosmapLoaded) {
             initMap();
-        });
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
+        }
+    }, [woosmapLoaded]);
 
     const initMap = () => {
         conf.woosmapLoadOptions.callback = () => {
@@ -34,7 +28,7 @@ const Map = () => {
 
     return (
         <div>
-            <div className='map-container' ref={mapContainerRef}/>
+            <div className='mapContainer' ref={mapContainerRef}/>
         </div>
     );
 };
