@@ -1,4 +1,4 @@
-.autocomplete-container {
+.autocomplete {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -8,7 +8,7 @@
     padding-bottom: 10px;
 }
 
-.autocomplete-input {
+.autocomplete__input {
     width: 100%;
     padding: 15px 10px;
     font-size: 15px;
@@ -17,34 +17,27 @@
     font-weight: 600;
 }
 
-.autocomplete-input:focus {
+.autocomplete__input:focus {
     outline: none;
 }
 
-.cancel-btn {
-    color: rgb(99, 99, 99);
+.autocomplete__cancelBtn {
     border: none;
     outline: none;
-    font-weight: 500;
-
     z-index: 1;
-    transform: translate(290px, 32px) scale(1.15);
+    transform: translate(290px, 35px) scale(1.3);
+    background: none;
 }
 
-.search {
-    display: flex;
-    flex-direction: row;
-}
-
-.active {
+.autocomplete__cancelBtn.active {
     opacity: 1;
 }
 
-.inactive {
+.autocomplete__cancelBtn.inactive {
     opacity: 0;
 }
 
-.prediction-results {
+.predictionsResults {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -56,54 +49,23 @@
     border-radius: 0.2rem;
 }
 
-.prediction-preview {
+.predictionPreview {
     transition: 1s;
     display: flex;
     justify-content: space-between;
-    padding: 5px 3px;
-    padding-right: 10px;
+    padding: 5px 10px 5px 3px;
     border-top: 1px solid;
     border-color: rgb(241, 241, 241);
     align-items: baseline;
     cursor: pointer;
 }
 
-.prediction-preview:hover {
+.predictionPreview:hover {
     background: rgb(241, 241, 241);
 }
 
-.first {
+.predictionPreview__locality {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-}
-
-.second {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
-
-.sub-header {
-    font-weight: 600;
-    font-size: 10px;
-    color: rgb(121, 121, 121);
-}
-
-.name {
-    font-size: 15px;
-    color: rgb(74, 74, 74);
-    font-weight: 800;
-    margin: 0rem 0;
-}
-
-.age {
-    font-size: 15px;
-    margin: 3px 0px;
-    color: rgb(74, 74, 74);
-    font-weight: 600;
-}
-
-.start {
-    border-top: none;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "basic",
+  "name": "store-locator",
   "version": "0.1.0",
   "description": "Woosmap JS Store Locator API with React example starter project",
   "dependencies": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "builds": "react-scripts build"
   },
   "browserslist": {
     "production": [

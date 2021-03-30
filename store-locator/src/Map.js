@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react';
 import ReactDOMServer from "react-dom/server";
 import conf from "./config.json";
-
+import useScript from "./hooks/useScript";
 import Sidebar from './components/Sidebar';
 import InfoWindow from "./components/InfoWindow.js";
 
@@ -9,24 +9,15 @@ import './Map.css';
 
 const Map = () => {
     const mapContainerRef = useRef(null);
-    const [map, setMap] = useState(null)
     const [mapView, setMapView] = useState(null)
     const [dataSource, setDataSource] = useState(null);
+    const woosmapLoaded = useScript(conf.woosmapLoaderUrl);
 
-    // Load Woosmap Loader when component mounts
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = conf.woosmapLoaderUrl;
-        script.async = true;
-        document.body.appendChild(script);
-        script.addEventListener("load", () => {
-            // init the map when woosmap loader is loaded
+        if (woosmapLoaded) {
             initMap();
-        });
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
+        }
+    }, [woosmapLoaded]);
 
     const initMap = () => {
         conf.woosmapLoadOptions.callback = () => {
@@ -34,30 +25,22 @@ const Map = () => {
             loader.load(() => {
                 const map = new window.google.maps.Map(mapContainerRef.current, conf.googleMapsOptions);
                 const dataSource = new window.woosmap.DataSource();
-                const mapView = new window.woosmap.TiledView(map, conf.styleOptions);
+                const mapView = new window.woosmap.TiledView(map, conf.woosmapStyleOptions);
                 const templateRenderer = {
                     render: (storeProperties) => {
                         return ReactDOMServer.renderToString(
                             <InfoWindow
                                 name={storeProperties.name}
-                                addressCity={storeProperties.address.city}
-                                contactPhone={storeProperties.contact.phone}
+                                address={storeProperties.address}
+                                contact={storeProperties.contact}
+                                openingHours={storeProperties.open}
                             />
                         );
                     }
                 };
-                const infoWindow = new woosmap.LocatorWindow(map, templateRenderer, {
-                    alignBottom: true,
-                    closeBoxURL: "https://images.woosmap.com/close.png",
-                    closeBoxMargin: "5px",
-                    pixelOffset: {
-                        width: -100,
-                        height: -80
-                    }
-                });
+                const infoWindow = new window.woosmap.LocatorWindow(map, templateRenderer, conf.infoWindow);
                 mapView.bindTo("selectedStore", infoWindow);
 
-                setMap(map);
                 setMapView(mapView);
                 setDataSource(dataSource);
             });
@@ -67,7 +50,7 @@ const Map = () => {
 
     return (
         <div>
-            <div className='map-container' ref={mapContainerRef}/>
+            <div className='mapContainer' ref={mapContainerRef}/>
             <Sidebar mapView={mapView} dataSource={dataSource}/>
         </div>
     );

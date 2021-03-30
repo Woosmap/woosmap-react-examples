@@ -1,27 +1,20 @@
 import React, {useEffect, useState} from "react";
 import "./Autocomplete.css";
 import conf from "../config.json";
+import useScript from "../hooks/useScript";
 
-const Autocomplete = ({
-                          setLocationHooks
-                      }) => {
+const Autocomplete = ({setLocationHooks}) => {
     const [keyword, setKeyword] = useState("")
     const [results, setResults] = useState([])
     const [autocompleteService, setAutocompleteService] = useState(null);
+    const woosmapLoaded = useScript(conf.woosmapLocalitiesUrl);
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = conf.woosmapLocalitiesUrl;
-        script.async = true;
-        document.body.appendChild(script);
-        script.addEventListener("load", () => {
+        if (woosmapLoaded) {
             const autocompleteService = new window.woosmap.localities.AutocompleteService(conf.woosmapLoadOptions.publicKey);
             setAutocompleteService(autocompleteService);
-        });
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
+        }
+    }, [woosmapLoaded]);
 
     const updateText = text => {
         setKeyword(text);
@@ -31,8 +24,8 @@ const Autocomplete = ({
         }
     };
     const updateKeyword = text => {
-        onSearch(text);
         updateText(text);
+        onSearch(text);
     };
 
     const searchNearbyStores = (text, location) => {
@@ -57,7 +50,7 @@ const Autocomplete = ({
 
     const renderResults = results.map(({description, location}, index) => {
         return (
-            <PredictionsPreview
+            <PredictionPreview
                 key={index}
                 searchNearbyStores={searchNearbyStores}
                 index={index}
@@ -67,35 +60,32 @@ const Autocomplete = ({
         );
     });
     return (
-        <div className="autocomplete-container">
+        <div className="autocomplete">
             <button
                 onClick={() => updateText("")}
-                className={`cancel-btn ${keyword.length > 0 ? "active" : "inactive"}`}
-            >
-                ⨉
+                className={`autocomplete__cancelBtn ${keyword.length > 0 ? "active" : "inactive"}`}>
+                <img src="https://images.woosmap.com/close.svg" alt="reset"/>
             </button>
             <input
-                className="autocomplete-input"
+                className="autocomplete__input"
                 placeholder="Search Localities..."
                 value={keyword}
                 onChange={e => updateKeyword(e.target.value)}
             />
 
             {results.length > 0 ? (
-                <div className="prediction-results">{renderResults}</div>
+                <div className="predictionsResults">{renderResults}</div>
             ) : null}
         </div>
     );
 }
 
-const PredictionsPreview = ({description, index, searchNearbyStores, location}) => {
+const PredictionPreview = ({description, index, searchNearbyStores, location}) => {
     return (
-        <div
-            onClick={() => searchNearbyStores(description, location)}
-            className={`prediction-preview ${index == 0 ? "start" : ""}`}
-        >
-            <div className="first">
-                <p className="locality">{description}</p>
+        <div onClick={() => searchNearbyStores(description, location)}
+             className="predictionPreview">
+            <div className="predictionPreview__locality">
+                <p className="predictionPreview__localityDesc">{description}</p>
             </div>
         </div>
     );
