@@ -7,7 +7,7 @@ import {useState} from "react";
 export default function Sidebar({mapView, dataSource}) {
     const [location, setLocation] = useState(null)
 
-    return <div className="sidebar-container">
+    return <div className="sidebar">
         <Autocomplete locationHooks={location}
                       setLocationHooks={setLocation}/>
         <StoresList location={location} mapView={mapView} dataSource={dataSource}/>

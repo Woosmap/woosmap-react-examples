@@ -11,10 +11,6 @@ export default function StoresList({location, mapView, dataSource, selectedStore
     }, [location])
 
     const setSelectedStore = (store) => {
-        mapView.panTo({
-            lat: store.geometry.coordinates[1],
-            lng: store.geometry.coordinates[0]
-        });
         mapView.set("selectedStore", store);
     }
 
@@ -36,11 +32,12 @@ export default function StoresList({location, mapView, dataSource, selectedStore
     }
 
     return (
-        <section>
+        <section className="storesList">
             {stores.map((store) => (
-                <div className="store-preview" key={store.properties.store_id} onClick={() => setSelectedStore(store)}>
+                <div className="storesList__storePreview" key={store.properties.store_id} onClick={() => setSelectedStore(store)}>
                     <StorePreview
                         name={store.properties.name}
+                        address={store.properties.address}
                     />
                 </div>
             ))}

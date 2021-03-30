@@ -1,7 +1,16 @@
-.store-preview {
+.storesList {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.storesList__storePreview {
     cursor: pointer;
     border-top: 1px solid;
     border-color: rgb(241, 241, 241);
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
+}
+
+.storesList__storePreview:hover {
+    background: rgb(241, 241, 241)
 }

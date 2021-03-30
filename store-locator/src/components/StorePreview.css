@@ -1,0 +1,12 @@
+.storePreview {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.storePreview__storeName {
+    font-weight: 600;
+}
+
+.storePreview__storeAddressLines {
+}
