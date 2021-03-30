@@ -17,7 +17,7 @@
     "zoom": 10,
     "mapTypeControl": false
   },
-  "styleOptions": {
+  "woosmapStyleOptions": {
     "style": {
       "default": {
         "icon": {
@@ -48,8 +48,18 @@
       "size": 15,
       "minSize": 4
     },
-    "breakPoint": 12,
-    "gentleCenter": false
+    "breakPoint": 12
   },
-  "storesByPage": 10
+  "storesByPage": 10,
+  "infoWindow": {
+    "disableAutoPan": true,
+    "alignBottom": true,
+    "closeBoxURL": "https://images.woosmap.com/close.svg",
+    "boxStyle": "width:230px",
+    "closeBoxMargin": "13px 8px",
+    "pixelOffset": {
+      "width": -100,
+      "height": -80
+    }
+  }
 }
