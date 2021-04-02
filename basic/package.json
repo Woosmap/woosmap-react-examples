@@ -1,6 +1,7 @@
 {
   "name": "basic",
   "version": "0.1.0",
+  "homepage": "https://demo.woosmap.com/react/basic",
   "description": "Woosmap JS Store Locator API with React example starter project",
   "dependencies": {
     "@babel/runtime": "7.13.8",
