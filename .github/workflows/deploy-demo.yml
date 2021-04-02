@@ -22,4 +22,5 @@ jobs:
 
       - name: Copy files to demo website with the AWS CLI
         run: |
-          aws s3 sync build s3://demo.woosmap.com/react/basic/ --acl public-read
+          ls -la
+          aws s3 sync ./build s3://demo.woosmap.com/react/basic/ --acl public-read
