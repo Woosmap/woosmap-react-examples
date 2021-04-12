@@ -7,7 +7,7 @@
     "loadJQuery": false
   },
   "googleLoadOptions": {
-    "key": ""
+    "key": "AIzaSyCOtRab6Lh2pNn7gYxvAqN5leETC24OXYQ"
   },
   "googleMapsOptions": {
     "center": {
@@ -15,7 +15,27 @@
       "lng": -0.185
     },
     "zoom": 10,
-    "mapTypeControl": false
+    "mapTypeControl": false,
+    "fullscreenControl": false,
+    "styles": [
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
   },
   "woosmapStyleOptions": {
     "style": {
