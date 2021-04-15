@@ -23,7 +23,7 @@ const Map = () => {
             loader.load(() => {
                 const map = new window.google.maps.Map(mapContainerRef.current, conf.googleMapsOptions);
                 const mapView = new window.woosmap.TiledView(map, conf.markersOptions);
-                const selectedStoreObserver = new woosmap.utils.MVCObject();
+                const selectedStoreObserver = new window.woosmap.utils.MVCObject();
                 selectedStoreObserver.selectedStore_changed = () => {
                     setSelectedStore(selectedStoreObserver.get('selectedStore'));
                 };
