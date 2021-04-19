@@ -16,9 +16,6 @@ export default function useScript(src) {
             } else {
                 setLoaded(true)
             }
-            return () => {
-                document.body.removeChild(script);
-            }
         }, [src]);
         return loaded;
     } catch (err) {
