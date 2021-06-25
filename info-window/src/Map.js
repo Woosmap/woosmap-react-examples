@@ -1,5 +1,6 @@
 import React, {useRef, useEffect, useState} from 'react';
-import Infobox from "./components/InfoBox";
+import ReactDOM from 'react-dom';
+import InfoWindow from "./components/InfoWindow";
 import useScript from "./hooks/useScript";
 
 import './Map.css';
@@ -23,11 +24,18 @@ const Map = () => {
             loader.load(() => {
                 const map = new window.google.maps.Map(mapContainerRef.current, conf.googleMapsOptions);
                 const mapView = new window.woosmap.TiledView(map, conf.markersOptions);
-                const selectedStoreObserver = new window.woosmap.utils.MVCObject();
-                selectedStoreObserver.selectedStore_changed = () => {
-                    setSelectedStore(selectedStoreObserver.get('selectedStore'));
-                };
-                selectedStoreObserver.bindTo('selectedStore', mapView);
+                const templateInfoWindow = "<div id='infoWindow-{{store_id}}'></div>";
+                const templateRenderer = new window.woosmap.TemplateRenderer(templateInfoWindow);
+                const infoWindow = new window.woosmap.LocatorWindow(map, templateRenderer);
+                infoWindow.setOpeningCallback(() => {
+                    const selectedStore = infoWindow.get('selectedStore').properties;
+                    return ReactDOM.render(
+                        <InfoWindow
+                            store={selectedStore}
+                        />, document.getElementById(`infoWindow-${selectedStore.store_id}`)
+                    );
+                });
+                mapView.bindTo("selectedStore", infoWindow);
             });
         };
         window.WoosmapLoader.load(conf.woosmapLoadOptions);
@@ -35,7 +43,6 @@ const Map = () => {
 
     return (
         <div>
-            <Infobox store={selectedStore}/>
             <div className='mapContainer' ref={mapContainerRef}/>
         </div>
     );

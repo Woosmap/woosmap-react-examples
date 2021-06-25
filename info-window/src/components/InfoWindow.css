@@ -1,0 +1,30 @@
+.infoBox {
+    padding: 15px 5px;
+    background-color: #FFF;
+    border-radius: 4px;
+    color: #1d1d1d;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    max-width: 220px;
+}
+
+.infoBox__storeName {
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.infoBox__addressTitle, .infoBox__contactTitle {
+    margin-bottom: 0;
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+.infoBox__storeName, .infoBox__addressTitle, .infoBox__contactTitle, .infoBox__addressLines, .infoBox__addressCity, .infoBox__contactPhone, .infoBox__contactWebsite, .infoBox__openingHours {
+    padding: 0 10px;
+}
+
+.infoBox__contactWebsite a {
+    color: #008248;
+
+}

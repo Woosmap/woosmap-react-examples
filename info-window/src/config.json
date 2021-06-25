@@ -1,0 +1,65 @@
+{
+  "woosmapLoaderUrl": "https://sdk.woosmap.com/locator/loader.js",
+  "woosmapLoadOptions": {
+    "version": "1.4",
+    "publicKey": "woos-48c80350-88aa-333e-835a-07f4b658a9a4",
+    "loadJQuery": false
+  },
+  "googleLoadOptions": {
+    "key": "AIzaSyCOtRab6Lh2pNn7gYxvAqN5leETC24OXYQ"
+  },
+  "googleMapsOptions": {
+    "center": {
+      "lat": 51.53,
+      "lng": -0.185
+    },
+    "zoom": 10,
+    "mapTypeControl": false,
+    "fullscreenControl": false,
+    "styles": [
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
+  },
+  "markersOptions": {
+    "style": {
+      "default": {
+        "icon": {
+          "url": "https://images.woosmap.com/starbucks-marker.svg",
+          "scaledSize": {
+            "width": 34,
+            "height": 40
+          }
+        },
+        "selectedIcon": {
+          "url": "https://images.woosmap.com/selected-starbuck.svg",
+          "scaledSize": {
+            "width": 32,
+            "height": 32
+          }
+        }
+      }
+    },
+    "tileStyle": {
+      "color": "#008248",
+      "size": 15,
+      "minSize": 4
+    },
+    "breakPoint": 12
+  }
+}
