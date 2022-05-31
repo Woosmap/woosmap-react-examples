@@ -1,0 +1,33 @@
+{
+  "woosmapMapJSUrl": "https://sdk.woosmap.com/map/map.js?key=woos-48c80350-88aa-333e-835a-07f4b658a9a4",
+  "woosmapMapOptions": {
+    "center": {
+      "lat": 51.53,
+      "lng": -0.185
+    },
+    "zoom": 10
+  },
+  "woosmapMapStyleOptions": {
+    "breakPoint": 1,
+    "default": {
+      "color": "#008248",
+      "size": 15,
+      "minSize": 4,
+      "icon": {
+        "url": "https://demo.woosmap.com/storelocator/images/markers/starbucks-marker.svg",
+        "scaledSize": {
+          "height": 47,
+          "width": 40
+        }
+      },
+      "selectedIcon": {
+        "url": "https://demo.woosmap.com/storelocator/images/markers/starbucks-marker-selected.svg",
+        "scaledSize": {
+          "height": 71,
+          "width": 61
+        }
+      }
+    },
+    "rules": []
+  }
+}

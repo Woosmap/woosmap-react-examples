@@ -1,0 +1,8 @@
+.sidebar {
+    top: 15px;
+    left: 15px;
+    width: 320px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 2px;
+}
